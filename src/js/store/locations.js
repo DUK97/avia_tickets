@@ -92,8 +92,7 @@ class Locations {
   }
 
   serializeTickets(tickets) {
-    return Object.values(tickets).map( (ticket,index) => {
-      console.log(ticket);
+    return Object.values(tickets).map((ticket, index) => {
       return {
         ...ticket,
         id: index,

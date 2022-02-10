@@ -52,12 +52,14 @@ class FavoriteTicketsUI {
   renderRemoveFromFavoriteBtn(ticket, ticketId) {
     const removeBtn = FavoriteTicketsUI.removeFromFavoriteBtnTemplate(ticketId);
     const container = ticket.closest(".btn-container");
-    console.log(container);
     container.insertAdjacentHTML("beforeend", removeBtn);
   }
 
-  showEmptyMsg() {
-    FavoriteTicketsUI.emptyMsgTemplate();
+  showEmptyMsg(container) {
+    this.clearContainer();
+    const msg = FavoriteTicketsUI.emptyMsgTemplate();
+
+    container.insertAdjacentHTML("afterbegin", msg);
   }
 
   static emptyMsgTemplate() {

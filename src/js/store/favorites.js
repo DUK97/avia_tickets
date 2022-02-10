@@ -14,7 +14,6 @@ class FavoriteTickets {
   }
 
   removeFavorite(ticket) {
-    console.log(ticket, this.favoriteTickets);
     const ticketPos = this.favoriteTickets.indexOf(ticket);
     this.favoriteTickets.splice(ticketPos, 1);
   }

@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const form = formUI.form;
   const container = document.querySelector(".tickets-sections .row");
   const favoriteContainer = document.getElementById("dropdown1");
+  const showFavoriteContainer = document.querySelector(".dropdown-trigger");
 
   // Events
   initApp();
@@ -21,7 +22,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   container.addEventListener("click", addTicketToFavorite);
   favoriteContainer.addEventListener("click", addTicketToFavorite);
+  showFavoriteContainer.addEventListener("click", showEmptyFavorites);
+
   // handlers
+
   async function initApp() {
     await locations.init();
     formUI.setAutocompleteData(locations.shortCities);
@@ -43,7 +47,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
 
     ticketsUI.renderTickets(locations.lastSearch);
-    console.log(locations.lastSearch);
   }
 
   function addTicketToFavorite({ target }) {
@@ -60,6 +63,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
       favoriteTicketsUI.changeBtnStyle(target, "remove", ticketId);
       favoriteTickets.removeFavorite(ticket);
       favoriteTicketsUI.renderFavoriteTickets();
+    }
+  }
+  function showEmptyFavorites() {
+    if (!favoriteTickets.tickets.length) {
+      favoriteTicketsUI.showEmptyMsg(favoriteContainer);
     }
   }
 });
