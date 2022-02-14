@@ -6,6 +6,7 @@ import ticketsUI from "./views/tickets";
 import currencyUI from "./views/currency";
 import favoriteTickets from "./store/favorites";
 import favoriteTicketsUI from "./views/favorite";
+import { compareDates } from "./helpers/date";
 
 document.addEventListener("DOMContentLoaded", (e) => {
   const form = formUI.form;
@@ -37,6 +38,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const depart_date = formUI.departDateValue;
     const return_date = formUI.returnDateValue;
     const currency = currencyUI.currecyValue;
+
+    const validateform = formUI.validateForm(depart_date, return_date);
+
+    if (validateform >= 0) {
+      return;
+    }
 
     await locations.fetchTickets({
       origin,

@@ -66,6 +66,10 @@
   font-size: 1.5rem;
 }
 
+#dropdown1 {
+  text-align: center;
+}
+
 .favorites .dropdown-content {
   width: 400px !important;
   color: #000;
@@ -140,9 +144,14 @@
   font-size: 26px;
 }
 
-.ticket-time-departure {
+.ticket-time-departure,
+.ticket-time-return {
   font-weight: bold;
   color: gray;
+}
+
+.ticket-time-return {
+  margin-left: 20px;
 }
 
 .ticket-price {

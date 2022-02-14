@@ -10,7 +10,7 @@ class TicketsUI {
     this.clearContainer();
 
     if (!tickets.length) {
-      this.showEmptyMsg();
+      this.showMsg("empty");
       return;
     }
 
@@ -29,15 +29,21 @@ class TicketsUI {
     this.container.innerHTML = "";
   }
 
-  showEmptyMsg() {
-    const template = TicketsUI.emptyMsgTemplate();
+  showMsg(type) {
+    const template = TicketsUI.MsgTemplate(type);
     this.container.insertAdjacentHTML("afterbegin", template);
   }
 
-  static emptyMsgTemplate() {
-    return `
+  static MsgTemplate(msg) {
+    if (msg === "empty") {
+      return `
       <div class="tickets-empty-res-msg">По вашему запросу билетов не найдено.</div>
     `;
+    } else {
+      return `
+      <div class="tickets-empty-res-msg">Измените дату возвращения.</div>
+    `;
+    }
   }
 
   static ticketTemplate(ticket, currency) {
@@ -59,7 +65,8 @@ class TicketsUI {
           </div>
         </div>
         <div class="ticket-time-price d-flex align-items-center">
-          <span class="ticket-time-departure">${ticket.departure_at}</span>
+          <span class="ticket-time-departure">Вылет: ${ticket.departure_at}</span>
+          <span class="ticket-time-return">Возвращение: ${ticket.return_at}</span>
           <span class="ticket-price ml-auto">${currency}${ticket.price}</span>
         </div>
         <div class="ticket-additional-info">
