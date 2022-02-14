@@ -10,7 +10,7 @@
     />
 
     <title>Document</title>
-  </head>
+  <script defer src="polyfill.77e84549441a8040bd08.js"></script><script defer src="app.77e84549441a8040bd08.js"></script><link href="./style.css" rel="stylesheet"></head>
   <body>
     <nav class="header purple darken-1">
       <div class="nav-wrapper">
@@ -74,6 +74,8 @@
                     <input
                       type="text"
                       class="datepicker"
+                      pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                      required
                       id="datepicker-depart"
                     />
                     <label for="datepicker-depart">Depart date</label>
@@ -81,6 +83,8 @@
                   <div class="input-field">
                     <input
                       type="text"
+                      pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                      required
                       class="datepicker"
                       id="datepicker-return"
                     />
